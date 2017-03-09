@@ -4,6 +4,7 @@
 #include <SFML/Graphics.hpp>
 #include <cmath>
 #include "field.hpp"
+#include <string>
 
 class Board
 {
@@ -14,6 +15,8 @@ class Board
 	int height;
 	sf::RenderWindow *window;
 	Field *field[3][3];
+	sf::Font font;
+	sf::Text text;
 	public:
 	char mark;
 	char winner;

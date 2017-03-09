@@ -1,7 +1,11 @@
 #include "board.hpp"
 
-	Board::Board(sf::RenderWindow* wnd, int x, int y): window(wnd), width(x), height(y)
+	Board :: Board(sf::RenderWindow* wnd, int x, int y): window(wnd), width(x), height(y)
 	{
+		font.loadFromFile("arial.ttf");
+		text.setFont(font);
+		text.setCharacterSize(20);
+		text.setPosition(20,10);
 		winner='?';
 		mark='x';
 		draw_board();
@@ -18,7 +22,7 @@
 				field[i][j]=NULL;
 			}
 		}
-		//window->clear(sf::Color(64, 64, 64, 255));
+		window->clear(sf::Color(64, 64, 64, 255));
 	}
 
 	void Board::draw_board()
@@ -36,6 +40,10 @@
 				field[i][j]->make_frame(window, edge_x, edge_y, j, i, w, h);
 			}
 		}
+		sf::RectangleShape rectangle(sf::Vector2f(200, 40));
+		rectangle.setFillColor(sf::Color(64, 64, 64, 255));
+		text.setString("Aktualny gracz: X");
+		window->draw(text);
 		window->display();
 	}
 
@@ -54,9 +62,45 @@
 					check_winner();					
 					j=i=3;
 					if(mark=='x')
-					{ mark='o'; }
+					{ 
+						mark='o';
+						sf::RectangleShape rectangle(sf::Vector2f(200, 40));
+						rectangle.setFillColor(sf::Color(64, 64, 64, 255));
+						window->draw(rectangle);
+						window->display();
+						if(winner=='?')
+						{
+							text.setString("Aktualny gracz: O");
+							window->draw(text);
+							window->display();					
+						}
+						else
+						{
+							text.setString(L"Wygrał gracz: X !");
+							window->draw(text);
+							window->display();
+						};
+					}
 					else
-					{ mark='x'; };
+					{ 
+						mark='x'; 
+						sf::RectangleShape rectangle(sf::Vector2f(200,40));
+						rectangle.setFillColor(sf::Color(64, 64, 64, 255));
+						window->draw(rectangle);
+						window->display(); 
+						if(winner=='?')
+						{
+							text.setString("Aktualny gracz: X");
+							window->draw(text);
+							window->display();					
+						}
+						else
+						{
+							text.setString(L"Wygrał gracz: O !");
+							window->draw(text);
+							window->display();
+						};
+					};
 					break;
 				}
 			}
