@@ -75,11 +75,14 @@
 							window->display();					
 						}
 						else
-						{
+						{	
+							if(winner=='-')
+							text.setString("Remis!");
+							else
 							text.setString(L"Wygrał gracz: X !");
 							window->draw(text);
 							window->display();
-						};
+						}
 					}
 					else
 					{ 
