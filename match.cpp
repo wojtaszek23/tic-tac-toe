@@ -2,7 +2,7 @@
 
 	Match :: Match()
 	{
-		window.create (sf::VideoMode(640,480), "Circle and cross",sf::Style::Close);
+		window.create (sf::VideoMode(640,480), "Tic Tac Toe",sf::Style::Close);
         	window.clear (sf::Color(64, 64, 64, 255));
 		board = new Board(&window, 640, 480);
 		play();

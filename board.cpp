@@ -2,7 +2,7 @@
 
 	Board :: Board(sf::RenderWindow* wnd, int x, int y): window(wnd), width(x), height(y)
 	{
-		font.loadFromFile("arial.ttf");
+		font.loadFromFile("Alabama.ttf");
 		text.setFont(font);
 		text.setCharacterSize(20);
 		text.setPosition(20,10);
